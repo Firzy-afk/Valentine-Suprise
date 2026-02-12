@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Talitha ❤️</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background: linear-gradient(-45deg,#ff9ecf,#ff4d6d,#ff6fa5,#ff85c1);
+    background-size:400% 400%;
+    animation: gradientBG 10s ease infinite;
+    color:white;
+    text-align:center;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.card{
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 0 50px rgba(0,0,0,0.25);
+    width:90%;
+    max-width:400px;
+    position:relative;
+}
+
+.love{
+    font-size:70px;
+    animation:heartbeat 1s infinite;
+}
+
+button{
+    padding:10px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#ff4d6d;
+    cursor:pointer;
+    margin:10px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+img{
+    width:200px;
+    margin-top:20px;
+    border-radius:20px;
+    box-shadow:0 0 30px rgba(0,0,0,0.4);
+}
+
+@keyframes heartbeat{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.3);}
+    100%{transform:scale(1);}
+}
+
+/* Falling hearts */
+.heart{
+    position:absolute;
+    top:-10px;
+    color:white;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="page1">
+    <h1>Untuk TALITHA 💕</h1>
+    <div class="love">❤️</div>
+    <button onclick="buka()">Buka Surprise</button>
+</div>
+
+<div class="card" id="page2" style="display:none;">
+    <h1>Happy Valentine 💖</h1>
+    <p id="typing"></p>
+    <img src="cute.png">
+    <br><br>
+    <button onclick="yes()">Yes 💍</button>
+    <button id="noBtn">No 🙈</button>
+</div>
+
+<script>
+
+/* Buka halaman */
+function buka(){
+    document.getElementById("page1").style.display="none";
+    document.getElementById("page2").style.display="block";
+    typeEffect();
+}
+
+/* Typing effect */
+const text = "Talitha 💕 Kamu itu spesial banget. Jangan pernah berhenti jadi diri kamu sendiri. I really appreciate you more than you know ( Dari Firzyyy ) ❤️";
+let i=0;
+
+function typeEffect(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect,40);
+    }
+}
+
+/* Falling hearts generator */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+15+"px";
+    heart.style.animationDuration=Math.random()*3+3+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,400);
+
+/* No button kabur */
+const noBtn=document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover",()=>{
+    noBtn.style.position="absolute";
+    noBtn.style.left=Math.random()*300+"px";
+    noBtn.style.top=Math.random()*300+"px";
+});
+
+function yes(){
+    alert("YAYYY ❤️ Kamu bikin aku senyum banget 😭💕");
+}
+
+</script>
+
+</body>
+</html>
 
